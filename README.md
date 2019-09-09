@@ -1,8 +1,6 @@
-<<<<<<< HEAD:AngularProjects/Angular5Basics/README.md
+
 # Angular5Basics
-=======
-# Angular2Basics
->>>>>>> 17387498ceec04522ba3c60380fe570587e4b771:README.md
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 

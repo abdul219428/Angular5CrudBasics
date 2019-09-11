@@ -1,3 +1,119 @@
-<p>
-  create-employee works!
-</p>
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Employee</h3>
+    </div>
+    <div class="panel-body">
+      <!-- ngModel must be set to name attribute value for two-way data binding -->
+      <!-- in label for = id of the element we want to focus when the user hovers the mouse over the label -->
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input
+          id="fullName"
+          type="text"
+          class="form-control"
+          name="fullName"
+          [(ngModel)]="fullName"
+        />
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="text"
+          class="form-control"
+          name="email"
+          [(ngModel)]="email"
+        />
+      </div>
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          id="phoneNumber"
+          type="text"
+          class="form-control"
+          name="phoneNumber"
+          [(ngModel)]="phoneNumber"
+        />
+      </div>
+      <!-- Contact Preference -->
+      <div class="form-group">
+        <label for="contactPreference">Contact Preference</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input
+              type="radio"
+              value="phone"
+              name="contactPreference"
+              [(ngModel)]="contactPreference"
+            />
+            Phone
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              value="email"
+              name="contactPreference"
+              [(ngModel)]="contactPreference"
+            />
+            Email
+          </label>
+        </div>
+      </div>
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <div class="form-control">
+          <label class="radio-inline" for="gender">
+            <input
+              type="radio"
+              value="male"
+              name="gender"
+              [(ngModel)]="gender"
+            />
+            Male
+          </label>
+          <label class="radio-inline" for="gender">
+            <input
+              type="radio"
+              value="female"
+              name="gender"
+              [(ngModel)]="gender"
+            />
+            Female
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Is Active</label>
+        <div class="form-control">
+          <label class="checkbox-inline" for="gender">
+            <input type="checkbox" name="isActive" [(ngModel)]="isActive" />
+            Is Active
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="department"> Department</label>
+
+        <select
+          id="department"
+          name="department"
+          [(ngModel)]="department"
+          class="form-control"
+        >
+          <option *ngFor="let dep of departments" [value]="dep.id">
+            {{
+            dep.name
+          }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+  </div>
+</form>

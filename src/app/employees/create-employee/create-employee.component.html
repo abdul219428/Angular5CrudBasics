@@ -101,15 +101,29 @@
 
         <select
           id="department"
-          name="department"
-          [(ngModel)]="department"
+          name="departments"
+          [(ngModel)]="departments"
           class="form-control"
         >
           <option *ngFor="let dep of departments" [value]="dep.id">
-            {{
-            dep.name
-          }}</option>
+            {{ dep.name }}</option
+          >
         </select>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-5">
+          <label for="dateOfBirth">Date Of Birth</label>
+          <input
+            id="dateOfBirth"
+            type="text"
+            bsDatepicker
+            class="form-control"
+            name="dateOfBirth"
+            [(ngModel)]="dateOfBirth"
+            [bsConfig]="datePickerConfig"
+            placement="right"
+          />
+        </div>
       </div>
     </div>
     <div class="panel-footer">

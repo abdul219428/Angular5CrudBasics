@@ -6,6 +6,8 @@
     <div class="panel-body">
       <!-- ngModel must be set to name attribute value for two-way data binding -->
       <!-- in label for = id of the element we want to focus when the user hovers the mouse over the label -->
+
+      <!-- Full Name -->
       <div class="form-group">
         <label for="fullName">Full Name</label>
         <input
@@ -14,8 +16,11 @@
           class="form-control"
           name="fullName"
           [(ngModel)]="fullName"
+          #fullNameControl="ngModel"
+          required
         />
       </div>
+
       <!-- Email -->
       <div class="form-group">
         <label for="email">Email</label>
@@ -25,6 +30,7 @@
           class="form-control"
           name="email"
           [(ngModel)]="email"
+          required
         />
       </div>
       <!-- Phone Number -->
@@ -124,6 +130,34 @@
             placement="right"
           />
         </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photoPath">Photo Path</label>
+        <input
+          id="photoPath"
+          type="text"
+          class="form-control"
+          name="photoPath"
+          [(ngModel)]="photoPath"
+        />
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="togglePhotoPreview()"
+        >
+          {{ previewPhoto ? "Hide" : "Show" }} Preview
+        </button>
+      </div>
+      <div class="form-group">
+        <img
+          [src]="photoPath"
+          height="200px"
+          width="200px"
+          *ngIf="previewPhoto"
+        />
       </div>
     </div>
     <div class="panel-footer">

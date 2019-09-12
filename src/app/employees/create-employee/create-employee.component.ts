@@ -19,8 +19,14 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 5, name: "Admin" }
   ];
   datePickerConfig: Partial<BsDatepickerConfig>;
+  previewPhoto = false;
+
   saveEmployee(empForm: NgForm) {
     console.log(empForm.value);
+  }
+  togglePhotoPreview() {
+    this.previewPhoto = !this.previewPhoto;
+    
   }
   constructor() {
     this.datePickerConfig = Object.assign(

@@ -26,7 +26,6 @@ export class CreateEmployeeComponent implements OnInit {
   }
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
-    
   }
   constructor() {
     this.datePickerConfig = Object.assign(
@@ -34,8 +33,7 @@ export class CreateEmployeeComponent implements OnInit {
       {
         containerClass: "theme-dark-blue",
         showWeekNumbers: false,
-        minDate: new Date(2018, 0, 1),
-        maxDate: new Date(2019, 0, 1),
+
         dateInputFormat: "DD/MM/YYYY"
       }
     );

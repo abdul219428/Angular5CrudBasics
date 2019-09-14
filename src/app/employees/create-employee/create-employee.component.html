@@ -8,8 +8,12 @@
       <!-- in label for = id of the element we want to focus when the user hovers the mouse over the label -->
 
       <!-- Full Name -->
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
+      <div
+        [class.has-error]="fullNameControl.invalid && fullNameControl.touched"
+        class="form-group "
+        [class.has-success]="fullNameControl.valid"
+      >
+        <label for="fullName" class="control-label">Full Name</label>
         <input
           id="fullName"
           type="text"
@@ -19,6 +23,11 @@
           #fullNameControl="ngModel"
           required
         />
+        <span
+          *ngIf="fullNameControl.invalid && fullNameControl.touched"
+          class="help-block"
+          >Full Name is Required</span
+        >
       </div>
 
       <!-- Email -->
@@ -161,7 +170,7 @@
       </div>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
     </div>
   </div>
 </form>

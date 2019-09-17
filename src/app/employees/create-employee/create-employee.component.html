@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employee)">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Create Employee</h3>
@@ -9,38 +9,46 @@
 
       <!-- Full Name -->
       <div
-        [class.has-error]="fullNameControl.invalid && fullNameControl.touched"
+        [class.has-error]="name.invalid && name.touched"
         class="form-group "
-        [class.has-success]="fullNameControl.valid"
+        [class.has-success]="name.valid"
       >
-        <label for="fullName" class="control-label">Full Name</label>
+        <label for="name" class="control-label">Full Name</label>
         <input
-          id="fullName"
+          id="name"
           type="text"
           class="form-control"
-          name="fullName"
-          [(ngModel)]="fullName"
-          #fullNameControl="ngModel"
+          name="name"
+          [(ngModel)]="employee.name"
+          #name="ngModel"
           required
         />
         <span
-          *ngIf="fullNameControl.invalid && fullNameControl.touched"
+          *ngIf="name.invalid && name.touched"
           class="help-block"
           >Full Name is Required</span
         >
       </div>
 
       <!-- Email -->
-      <div class="form-group">
+      <div [class.has-error]="email.invalid && email.touched"
+      class="form-group "
+      [class.has-success]="email.valid">
         <label for="email">Email</label>
         <input
           id="email"
           type="text"
           class="form-control"
           name="email"
-          [(ngModel)]="email"
+          [(ngModel)]="employee.email"
           required
+          #email="ngModel"
         />
+        <span
+          *ngIf="email.invalid && email.touched"
+          class="help-block"
+          >Full Name is Required</span
+        >
       </div>
       <!-- Phone Number -->
       <div class="form-group">
@@ -50,7 +58,7 @@
           type="text"
           class="form-control"
           name="phoneNumber"
-          [(ngModel)]="phoneNumber"
+          [(ngModel)]="employee.phoneNumber"
         />
       </div>
       <!-- Contact Preference -->
@@ -62,7 +70,7 @@
               type="radio"
               value="phone"
               name="contactPreference"
-              [(ngModel)]="contactPreference"
+              [(ngModel)]="employee.contactPreference"
             />
             Phone
           </label>
@@ -71,7 +79,7 @@
               type="radio"
               value="email"
               name="contactPreference"
-              [(ngModel)]="contactPreference"
+              [(ngModel)]="employee.contactPreference"
             />
             Email
           </label>
@@ -86,7 +94,7 @@
               type="radio"
               value="male"
               name="gender"
-              [(ngModel)]="gender"
+              [(ngModel)]="employee.gender"
             />
             Male
           </label>
@@ -95,7 +103,7 @@
               type="radio"
               value="female"
               name="gender"
-              [(ngModel)]="gender"
+              [(ngModel)]="employee.gender"
             />
             Female
           </label>
@@ -105,7 +113,7 @@
         <label for="isActive">Is Active</label>
         <div class="form-control">
           <label class="checkbox-inline" for="gender">
-            <input type="checkbox" name="isActive" [(ngModel)]="isActive" />
+            <input type="checkbox" name="isActive" [(ngModel)]="employee.isActive" />
             Is Active
           </label>
         </div>
@@ -117,7 +125,7 @@
         <select
           id="department"
           name="departments"
-          [(ngModel)]="departments"
+          [(ngModel)]="employee.department"
           class="form-control"
         >
           <option *ngFor="let dep of departments" [value]="dep.id">
@@ -134,7 +142,7 @@
             bsDatepicker
             class="form-control"
             name="dateOfBirth"
-            [(ngModel)]="dateOfBirth"
+            [(ngModel)]="employee.dateOfBirth"
             [bsConfig]="datePickerConfig"
             placement="right"
           />
@@ -148,7 +156,7 @@
           type="text"
           class="form-control"
           name="photoPath"
-          [(ngModel)]="photoPath"
+          [(ngModel)]="employee.photoPath"
         />
       </div>
       <div class="form-group">
@@ -162,7 +170,7 @@
       </div>
       <div class="form-group">
         <img
-          [src]="photoPath"
+          [src]="employee.photoPath"
           height="200px"
           width="200px"
           *ngIf="previewPhoto"
@@ -170,7 +178,15 @@
       </div>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+      <button
+        class="btn btn-primary"
+        type="submit"
+
+      >
+        Save
+      </button>
     </div>
   </div>
 </form>
+
+

@@ -4,6 +4,7 @@ import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 
 // local imports
 import { Department } from "src/app/models/department.model";
+import { Employee } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-create-employee",
@@ -21,15 +22,28 @@ export class CreateEmployeeComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
   previewPhoto = false;
 
-  saveEmployee(empForm: NgForm) {
-    console.log(empForm.value);
+  employee: Employee = {
+    id: null,
+    name: null,
+    gender: null,
+    email: null,
+    phoneNumber: null,
+    contactPreference: null,
+    dateOfBirth: null,
+    department: null,
+    isActive: null,
+    photoPath: null
+  };
+
+  saveEmployee(employee: Employee):void {
+    console.log(employee);
   }
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
   constructor() {
     this.datePickerConfig = Object.assign(
-      {},
+
       {
         containerClass: "theme-dark-blue",
         showWeekNumbers: false,
